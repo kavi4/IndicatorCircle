@@ -1,0 +1,128 @@
+<!-- //==============ANGREEMENT=================================
+/*
+	options =
+	{
+		//required
+		size:
+		data:
+		container:
+
+		padding:
+		maxValue:100
+		minValue:0
+		unit:%
+		prefix:inCi
+		dotRadius:4*lineWidth
+		foregroundWidth:1
+		dotMargin:3*linewWidth
+
+		
+		dotMod: 1-have || 0-none
+		styleMod: 1-generate stylesheet || 2-generate attr || 0-none
+		signMod: 1 || 0-none
+		backgroundMod: 0-none || 1-have
+		
+		//style
+		
+		dotColor    :#40d47e
+		signColor   :white
+		signFont    :Arial
+		signFontSize:8
+		backgroundColor :#95a5a6
+		foregroundColor:#40d47e
+		
+		
+	}
+
+
+*/
+//=========================================================-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Use</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			box-sizing:border-box;
+
+		}
+		body{
+			height: 100%;
+			width: 100%;
+			background: url(city.jpg) center no-repeat;
+		}
+		.back{
+			width: 100%;
+			height: 768px;
+			background-color: rgba(142,68,173,0.5);
+		}
+		.container{
+			margin: 0 auto;
+			display: table;
+
+		}
+		.indicator{
+			display: inline-block;
+		}
+	line{
+		stroke:red;
+	}
+	</style>
+</head>
+<body>
+
+<div class="back">
+	<div class="container">
+	</div>
+</div>
+	
+</body>
+<script type="text/javascript" src="d3.min.js"></script>
+<script type="text/javascript" src="indicCircle.js"></script>
+<script type="text/javascript">
+var data_1 = 90;
+var data_2 = 60;
+var data_3 = 10;
+var opt = 
+{
+	data:data_1,
+	container:".container:first-child",
+	size:300,
+	foregroundWidth:3,
+	foregroundColor:"#3d9db3",
+	dotColor:"#3d9db3",
+	minValue: 0,
+	maxValue: 100,
+	dotMargin:1
+}
+var a = indicCircle.build(opt)
+
+opt.foregroundColor = "rgb(246,202,107)";
+opt.dotColor = "rgb(246,202,107)";
+opt.data = data_2;
+var b = indicCircle.build(opt)
+
+
+opt.foregroundColor = "rgb(251,96,144)";
+opt.dotColor = "rgb(251,96,144)";
+opt.data = data_3;
+opt.backgroundMod=1;
+opt.dotMod=1
+var c = indicCircle.build(opt)
+
+setInterval(function(){tween1(Math.floor(Math.random() * (100 - 0 + 1)+0))},5000);
+function tween1(rand){a.update(rand,1000);console.log(rand)}
+
+
+setInterval(function(){tween2(Math.floor(Math.random() * (100 - 0 + 1)+0))},5000);
+function tween2(rand){b.update(rand,1000);console.log(rand)}
+
+
+setInterval(function(){tween3(Math.floor(Math.random() * (100 - 0 + 1)+0))},5000);
+function tween3(rand){c.update(rand,1000);console.log(rand)}
+//a.update(100,5000);
+</script>
+</html>
